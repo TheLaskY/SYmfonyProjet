@@ -1,0 +1,4 @@
+services:
+#    bateaux.example:
+#        class: BateauxBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

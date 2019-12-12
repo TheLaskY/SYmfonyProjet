@@ -1,0 +1,41 @@
+<style>
+    th, td {
+        padding: 10px;
+    }
+    th {
+        text-align: left;
+    }
+</style>
+
+<h1>All Articles</h1>
+
+{% if bateau is not empty %}
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Body</th>
+            <th>Homepage</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for bateau in bateau %}
+            <tr>
+                <td>{{ bateau.idBateau }}</td>
+                <td>{{ bateau.marqueBateau }}</td>
+                <td>{{ bateau.TirantAirBateau }}...</td>
+                <td><a href="delete-bateau/{{ bateau.id }}">Delete</a></td>
+                <td><a href="update-bateau/{{ bateau.id }}">Update</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No article found.</p>
+{% endif %}
+
+<br/>
+<a href="/creer-bateau">Create New</a>

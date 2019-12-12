@@ -1,0 +1,65 @@
+<style>
+    th, td {
+        padding: 10px;
+    }
+    th {
+        text-align: right;
+    }
+</style>
+
+<h1>Create or Update Article:</h1>
+
+{{ form_start(form) }}
+
+<table>
+    <tbody>
+    <tr>
+        <th>IdBateau:</th>
+        <td>{{ form_widget(form.idBateau) }}</td>
+    </tr>
+    <tr>
+        <th>MarqueBateau:</th>
+        <td>{{ form_widget(form.marqueBateau) }}</td>
+    </tr>
+    <tr>
+        <th>longueurCoqueBateau:</th>
+        <td>{{ form_widget(form.longueurCoqueBateau) }}</td>
+    </tr>
+    <tr>
+        <th>longueurFlottaisonBateau:</th>
+        <td>{{ form_widget(form.longueurFlottaisonBateau) }}</td>
+    </tr>
+    <tr>
+        <th>LargeurMaxiBateau:</th>
+        <td>{{ form_widget(form.LargeurMaxiBateau) }}</td>
+    </tr>
+    <tr>
+        <th>TirantAirBateau:</th>
+        <td>{{ form_widget(form.TirantAirBateau) }}</td>
+    <tr>
+        <th>TirantEauMinBateau:</th>
+        <td>{{ form_widget(form.TirantEauMinBateau) }}</td>
+    </tr>
+    <tr>
+        <th>AnneeBateau:</th>
+        <td>{{ form_widget(form.AnneeBateau) }}</td>
+    </tr>
+    <tr>
+        <th>DeplacementLegeBateau:</th>
+        <td>{{ form_widget(form.DeplacementLegeBateau) }}</td>
+    </tr>
+    <tr>
+        <th>TypeCoqueBateau:</th>
+        <td>{{ form_widget(form.TypeCoqueBateau) }}</td>
+    </tr>
+    <tr>
+        <th></th>
+        <td>{{ form_widget(form.save) }}</td>
+    </tr>
+    </tbody>
+</table>
+
+{{ form_end(form) }}
+
+<br/>
+<a href="/show-bateaux">View All</a> -
