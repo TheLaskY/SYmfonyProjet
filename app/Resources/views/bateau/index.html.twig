@@ -1,0 +1,64 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        th, td {
+            padding: 10px;
+        }
+        th {
+            text-align: right;
+        }
+    </style>
+    <h1>Bateaus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idbateau</th>
+                <th>Marquebateau</th>
+                <th>Longueurcoquebateau</th>
+                <th>Longueurflottaisonbateau</th>
+                <th>Largeurmaxibateau</th>
+                <th>Tirantairbateau</th>
+                <th>Tiranteauminbateau</th>
+                <th>Typecoquebateau</th>
+                <th>Anneebateau</th>
+                <th>Deplacementlegebateau</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bateau in bateaus %}
+            <tr>
+                <td><a href="{{ path('bateau_show', { 'idbateau': bateau.idbateau }) }}">{{ bateau.idbateau }}</a></td>
+                <td>{{ bateau.marquebateau }}</td>
+                <td>{{ bateau.longueurcoquebateau }}</td>
+                <td>{{ bateau.longueurflottaisonbateau }}</td>
+                <td>{{ bateau.largeurmaxibateau }}</td>
+                <td>{{ bateau.tirantairbateau }}</td>
+                <td>{{ bateau.tiranteauminbateau }}</td>
+                <td>{{ bateau.typecoquebateau }}</td>
+                <td>{{ bateau.anneebateau }}</td>
+                <td>{{ bateau.deplacementlegebateau }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('bateau_show', { 'idbateau': bateau.idbateau }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('bateau_edit', { 'idbateau': bateau.idbateau }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('bateau_new') }}">Create a new bateau</a>
+        </li>
+    </ul>
+{% endblock %}

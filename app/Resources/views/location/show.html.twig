@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Location</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idlocation</th>
+                <td>{{ location.idlocation }}</td>
+            </tr>
+            <tr>
+                <th>Prixjourlocation</th>
+                <td>{{ location.prixjourlocation }}</td>
+            </tr>
+            <tr>
+                <th>Dureelocation</th>
+                <td>{{ location.dureelocation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('location_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('location_edit', { 'idlocation': location.idlocation }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

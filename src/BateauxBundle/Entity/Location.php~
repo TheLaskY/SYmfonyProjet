@@ -1,0 +1,50 @@
+<?php
+
+namespace BateauxBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Location
+ *
+ * @ORM\Table(name="location", indexes={@ORM\Index(name="LOCATION_CLIENT_FK", columns={"idClient"})})
+ * @ORM\Entity
+ */
+class Location
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idLocation", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idlocation;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PrixJourLocation", type="integer", nullable=false)
+     */
+    private $prixjourlocation;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="DureeLocation", type="integer", nullable=false)
+     */
+    private $dureelocation;
+
+    /**
+     * @var \Client
+     *
+     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idClient", referencedColumnName="idClient")
+     * })
+     */
+    private $idclient;
+
+
+}
+

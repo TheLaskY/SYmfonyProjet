@@ -7,364 +7,342 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * bateau
  *
- * @ORM\Table(name="bateau")
- * @ORM\Entity(repositoryClass="BateauxBundle\Repository\bateauRepository")
+ * @ORM\Table(name="bateau", indexes={@ORM\Index(name="BATEAU_LOCATION_FK", columns={"idLocation"})})
+ * @ORM\Entity
  */
 class bateau
 {
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="idBateau", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idBateau", type="integer")
-     */
-    private $idBateau;
+    private $idbateau;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="marqueBateau", type="string", length=45)
+     * @ORM\Column(name="marqueBateau", type="string", length=30, nullable=false)
      */
-    private $marqueBateau;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="longueurCoqueBateau", type="integer", nullable=true)
-     */
-    private $longueurCoqueBateau;
+    private $marquebateau;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="longueurFlottaisonBateau", type="string", length=45)
+     * @ORM\Column(name="longueurCoqueBateau", type="string", length=30, nullable=false)
      */
-    private $longueurFlottaisonBateau;
+    private $longueurcoquebateau;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="LargeurMaxiBateau", type="string", length=45)
+     * @ORM\Column(name="longueurFlottaisonBateau", type="string", length=30, nullable=false)
      */
-    private $LargeurMaxiBateau;
+    private $longueurflottaisonbateau;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="TirantAirBateau", type="string", length=45)
+     * @ORM\Column(name="largeurMaxiBateau", type="string", length=30, nullable=false)
      */
-    private $TirantAirBateau;
+    private $largeurmaxibateau;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="TirantEauMinBateau", type="string", length=45)
+     * @ORM\Column(name="TirantAirBateau", type="string", length=30, nullable=false)
      */
-    private $TirantEauMinBateau;
+    private $tirantairbateau;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="TirantEauMaxBateau", type="string", length=45,nullable=true)
+     * @ORM\Column(name="TirantEauMinBateau", type="string", length=30, nullable=false)
      */
-    private $TirantEauMaxBateau;
+    private $tiranteauminbateau;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="TypeCoqueBateau", type="string", length=45)
+     * @ORM\Column(name="TypeCoqueBateau", type="string", length=30, nullable=false)
      */
-    private $TypeCoqueBateau;
+    private $typecoquebateau;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="AnneeBateau", type="string", length=45)
+     * @ORM\Column(name="AnneeBateau", type="string", length=4, nullable=false)
      */
-    private $AnneeBateau;
+    private $anneebateau;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="DeplacementLegeBateau", type="string", length=45)
+     * @ORM\Column(name="DeplacementLegeBateau", type="string", length=30, nullable=false)
      */
-    private $DeplacementLegeBateau;
+    private $deplacementlegebateau;
+
+    /**
+     * @var \Location
+     *
+     * @ORM\ManyToOne(targetEntity="location")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idLocation", referencedColumnName="idLocation")
+     * })
+     */
+    private $idlocation;
+
 
 
     /**
-     * Get id
+     * Get idbateau
      *
-     * @return int
+     * @return integer
      */
-    public function getId()
+    public function getIdbateau()
     {
-        return $this->id;
+        return $this->idbateau;
     }
 
     /**
-     * Set idBateau
+     * Set marquebateau
      *
-     * @param integer $idBateau
+     * @param string $marquebateau
      *
      * @return bateau
      */
-    public function setIdBateau($idBateau)
+    public function setMarquebateau($marquebateau)
     {
-        $this->idBateau = $idBateau;
+        $this->marquebateau = $marquebateau;
 
         return $this;
     }
 
     /**
-     * Get idBateau
-     *
-     * @return int
-     */
-    public function getIdBateau()
-    {
-        return $this->idBateau;
-    }
-
-    /**
-     * Set marqueBateau
-     *
-     * @param string $marqueBateau
-     *
-     * @return bateau
-     */
-    public function setMarqueBateau($marqueBateau)
-    {
-        $this->marqueBateau = $marqueBateau;
-
-        return $this;
-    }
-
-    /**
-     * Get marqueBateau
+     * Get marquebateau
      *
      * @return string
      */
-    public function getMarqueBateau()
+    public function getMarquebateau()
     {
-        return $this->marqueBateau;
+        return $this->marquebateau;
     }
 
     /**
-     * Set longueurCoqueBateau
+     * Set longueurcoquebateau
      *
-     * @param integer $longueurCoqueBateau
+     * @param string $longueurcoquebateau
      *
      * @return bateau
      */
-    public function setLongueurCoqueBateau($longueurCoqueBateau)
+    public function setLongueurcoquebateau($longueurcoquebateau)
     {
-        $this->longueurCoqueBateau = $longueurCoqueBateau;
+        $this->longueurcoquebateau = $longueurcoquebateau;
 
         return $this;
     }
 
     /**
-     * Get longueurCoqueBateau
-     *
-     * @return int
-     */
-    public function getLongueurCoqueBateau()
-    {
-        return $this->longueurCoqueBateau;
-    }
-
-    /**
-     * Set longueurFlottaisonBateau
-     *
-     * @param string $longueurFlottaisonBateau
-     *
-     * @return bateau
-     */
-    public function setLongueurFlottaisonBateau($longueurFlottaisonBateau)
-    {
-        $this->longueurFlottaisonBateau = $longueurFlottaisonBateau;
-
-        return $this;
-    }
-
-    /**
-     * Get longueurFlottaisonBateau
+     * Get longueurcoquebateau
      *
      * @return string
      */
-    public function getLongueurFlottaisonBateau()
+    public function getLongueurcoquebateau()
     {
-        return $this->longueurFlottaisonBateau;
+        return $this->longueurcoquebateau;
     }
 
-    //Ca commence ici
-
     /**
-     * Get  LargeurMaxiBateau
+     * Set longueurflottaisonbateau
      *
-     * @return string
-     */
-    public function getLargeurMaxiBateau()
-    {
-        return $this->LargeurMaxiBateau;
-    }
-    /**
-     * Set LargeurMaxiBateau
-     *
-     * @param string $LargeurMaxiBateau
+     * @param string $longueurflottaisonbateau
      *
      * @return bateau
      */
-    public function setLargeurMaxiBateau($LargeurMaxiBateau)
+    public function setLongueurflottaisonbateau($longueurflottaisonbateau)
     {
-        $this->LargeurMaxiBateau = $LargeurMaxiBateau;
-
-        return $this;
-    }
-
-
-    /**
-     * Get TirantAirBateau
-     *
-     * @return string
-     */
-    public function getTirantAirBateau()
-    {
-        return $this->TirantAirBateau;
-    }
-
-    /**
-     * Set TirantAirBateau
-     *
-     * @param string $TirantAirBateau
-     *
-     * @return bateau
-     */
-    public function setTirantAirBateau($TirantAirBateau)
-    {
-        $this->TirantAirBateau = $TirantAirBateau;
+        $this->longueurflottaisonbateau = $longueurflottaisonbateau;
 
         return $this;
     }
 
     /**
-     * Get TirantEauMinBateau
+     * Get longueurflottaisonbateau
      *
      * @return string
      */
-    public function getTirantEauMinBateau()
+    public function getLongueurflottaisonbateau()
     {
-        return $this->TirantEauMinBateau;
+        return $this->longueurflottaisonbateau;
     }
 
     /**
-     * Set TirantEauMinBateau
+     * Set largeurmaxibateau
      *
-     * @param string $TirantEauMinBateau
+     * @param string $largeurmaxibateau
      *
      * @return bateau
      */
-    public function TirantEauMinBateau($TirantEauMinBateau)
+    public function setLargeurmaxibateau($largeurmaxibateau)
     {
-        $this->TirantEauMinBateau = $TirantEauMinBateau;
+        $this->largeurmaxibateau = $largeurmaxibateau;
 
         return $this;
     }
 
     /**
-     * Get TirantEauMaxBateau
+     * Get largeurmaxibateau
      *
      * @return string
      */
-    public function getTirantEauMaxBateau()
+    public function getLargeurmaxibateau()
     {
-        return $this->TirantEauMaxBateau;
+        return $this->largeurmaxibateau;
     }
 
     /**
-     * Set TirantEauMaxBateau
+     * Set tirantairbateau
      *
-     * @param string $TirantEauMaxBateau
+     * @param string $tirantairbateau
      *
      * @return bateau
      */
-    public function setTirantEauMaxBateau($TirantEauMaxBateau)
+    public function setTirantairbateau($tirantairbateau)
     {
-        $this->TirantEauMaxBateau = $TirantEauMaxBateau;
+        $this->tirantairbateau = $tirantairbateau;
 
         return $this;
     }
 
     /**
-     * Get TypeCoqueBateau
+     * Get tirantairbateau
      *
      * @return string
      */
-    public function getTypeCoqueBateau()
+    public function getTirantairbateau()
     {
-        return $this->TypeCoqueBateau;
+        return $this->tirantairbateau;
     }
 
     /**
-     * Set TypeCoqueBateau
+     * Set tiranteauminbateau
      *
-     * @param string $TypeCoqueBateau
+     * @param string $tiranteauminbateau
      *
      * @return bateau
      */
-    public function setTypeCoqueBateau($TypeCoqueBateau)
+    public function setTiranteauminbateau($tiranteauminbateau)
     {
-        $this->TypeCoqueBateau = $TypeCoqueBateau;
+        $this->tiranteauminbateau = $tiranteauminbateau;
 
         return $this;
     }
 
     /**
-     * Get AnneeBateau
+     * Get tiranteauminbateau
      *
      * @return string
      */
-    public function getAnneeBateau()
+    public function getTiranteauminbateau()
     {
-        return $this->AnneeBateau;
+        return $this->tiranteauminbateau;
     }
 
     /**
-     * Set AnneeBateau
+     * Set typecoquebateau
      *
-     * @param string $AnneeBateau
+     * @param string $typecoquebateau
      *
      * @return bateau
      */
-    public function setAnneeBateau($AnneeBateau)
+    public function setTypecoquebateau($typecoquebateau)
     {
-        $this->AnneeBateau = $AnneeBateau;
+        $this->typecoquebateau = $typecoquebateau;
 
         return $this;
     }
 
     /**
-     * Get DeplacementLegeBateau
+     * Get typecoquebateau
      *
      * @return string
      */
-    public function getDeplacementLegeBateau()
+    public function getTypecoquebateau()
     {
-        return $this->DeplacementLegeBateau;
+        return $this->typecoquebateau;
     }
 
     /**
-     * Set DeplacementLegeBateau
+     * Set anneebateau
      *
-     * @param string $DeplacementLegeBateau
+     * @param string $anneebateau
      *
      * @return bateau
      */
-    public function setDeplacementLegeBateau($DeplacementLegeBateau)
+    public function setAnneebateau($anneebateau)
     {
-        $this->DeplacementLegeBateau = $DeplacementLegeBateau;
+        $this->anneebateau = $anneebateau;
 
         return $this;
+    }
+
+    /**
+     * Get anneebateau
+     *
+     * @return string
+     */
+    public function getAnneebateau()
+    {
+        return $this->anneebateau;
+    }
+
+    /**
+     * Set deplacementlegebateau
+     *
+     * @param string $deplacementlegebateau
+     *
+     * @return bateau
+     */
+    public function setDeplacementlegebateau($deplacementlegebateau)
+    {
+        $this->deplacementlegebateau = $deplacementlegebateau;
+
+        return $this;
+    }
+
+    /**
+     * Get deplacementlegebateau
+     *
+     * @return string
+     */
+    public function getDeplacementlegebateau()
+    {
+        return $this->deplacementlegebateau;
+    }
+
+    /**
+     * Set idlocation
+     *
+     * @param \BateauxBundle\Entity\location $idlocation
+     *
+     * @return bateau
+     */
+    public function setIdlocation(\BateauxBundle\Entity\location $idlocation = null)
+    {
+        $this->idlocation = $idlocation;
+
+        return $this;
+    }
+
+    /**
+     * Get idlocation
+     *
+     * @return \Location
+     */
+    public function getIdlocation()
+    {
+        return $this->idlocation;
     }
 }

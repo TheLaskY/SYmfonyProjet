@@ -1,41 +1,64 @@
-<style>
-    th, td {
-        padding: 10px;
-    }
-    th {
-        text-align: left;
-    }
-</style>
+{% extends 'base.html.twig' %}
 
-<h1>All Articles</h1>
+{% block body %}
+    <h1>Bateau</h1>
 
-{% if bateau is not empty %}
     <table>
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Body</th>
-            <th>Homepage</th>
-            <th>Delete</th>
-            <th>Update</th>
-        </tr>
-        </thead>
         <tbody>
-        {% for bateau in bateau %}
             <tr>
-                <td>{{ bateau.idBateau }}</td>
-                <td>{{ bateau.marqueBateau }}</td>
-                <td>{{ bateau.TirantAirBateau }}...</td>
-                <td><a href="delete-bateau/{{ bateau.id }}">Delete</a></td>
-                <td><a href="update-bateau/{{ bateau.id }}">Update</a></td>
+                <th>Idbateau</th>
+                <td>{{ bateau.idbateau }}</td>
             </tr>
-        {% endfor %}
+            <tr>
+                <th>Marquebateau</th>
+                <td>{{ bateau.marquebateau }}</td>
+            </tr>
+            <tr>
+                <th>Longueurcoquebateau</th>
+                <td>{{ bateau.longueurcoquebateau }}</td>
+            </tr>
+            <tr>
+                <th>Longueurflottaisonbateau</th>
+                <td>{{ bateau.longueurflottaisonbateau }}</td>
+            </tr>
+            <tr>
+                <th>Largeurmaxibateau</th>
+                <td>{{ bateau.largeurmaxibateau }}</td>
+            </tr>
+            <tr>
+                <th>Tirantairbateau</th>
+                <td>{{ bateau.tirantairbateau }}</td>
+            </tr>
+            <tr>
+                <th>Tiranteauminbateau</th>
+                <td>{{ bateau.tiranteauminbateau }}</td>
+            </tr>
+            <tr>
+                <th>Typecoquebateau</th>
+                <td>{{ bateau.typecoquebateau }}</td>
+            </tr>
+            <tr>
+                <th>Anneebateau</th>
+                <td>{{ bateau.anneebateau }}</td>
+            </tr>
+            <tr>
+                <th>Deplacementlegebateau</th>
+                <td>{{ bateau.deplacementlegebateau }}</td>
+            </tr>
         </tbody>
     </table>
-{% else %}
-    <p>No article found.</p>
-{% endif %}
 
-<br/>
-<a href="/creer-bateau">Create New</a>
+    <ul>
+        <li>
+            <a href="{{ path('bateau_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('bateau_edit', { 'idbateau': bateau.idbateau }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

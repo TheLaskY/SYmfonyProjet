@@ -8,183 +8,158 @@ use Doctrine\ORM\Mapping as ORM;
  * client
  *
  * @ORM\Table(name="client")
- * @ORM\Entity(repositoryClass="BateauxBundle\Repository\clientRepository")
+ * @ORM\Entity
  */
 class client
 {
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="idClient", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idClient", type="integer")
-     */
-    private $idClient;
+    private $idclient;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomClient", type="string", length=45)
+     * @ORM\Column(name="nomClient", type="string", length=30, nullable=false)
      */
-    private $nomClient;
+    private $nomclient;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenomClient", type="string", length=45)
+     * @ORM\Column(name="prenomClient", type="string", length=30, nullable=false)
      */
-    private $prenomClient;
+    private $prenomclient;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="numTelClient", type="string", length=45)
+     * @ORM\Column(name="numTelClient", type="string", length=30, nullable=false)
      */
-    private $numTelClient;
+    private $numtelclient;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ageClient", type="string", length=45)
+     * @ORM\Column(name="ageClient", type="string", length=30, nullable=false)
      */
-    private $ageClient;
+    private $ageclient;
+
 
 
     /**
-     * Get id
+     * Get idclient
      *
-     * @return int
+     * @return integer
      */
-    public function getId()
+    public function getIdclient()
     {
-        return $this->id;
+        return $this->idclient;
     }
 
     /**
-     * Set idClient
+     * Set nomclient
      *
-     * @param integer $idClient
+     * @param string $nomclient
      *
      * @return client
      */
-    public function setIdClient($idClient)
+    public function setNomclient($nomclient)
     {
-        $this->idClient = $idClient;
+        $this->nomclient = $nomclient;
 
         return $this;
     }
 
     /**
-     * Get idClient
-     *
-     * @return int
-     */
-    public function getIdClient()
-    {
-        return $this->idClient;
-    }
-
-    /**
-     * Set nomClient
-     *
-     * @param string $nomClient
-     *
-     * @return client
-     */
-    public function setNomClient($nomClient)
-    {
-        $this->nomClient = $nomClient;
-
-        return $this;
-    }
-
-    /**
-     * Get nomClient
+     * Get nomclient
      *
      * @return string
      */
-    public function getNomClient()
+    public function getNomclient()
     {
-        return $this->nomClient;
+        return $this->nomclient;
     }
 
     /**
-     * Set prenomClient
+     * Set prenomclient
      *
-     * @param string $prenomClient
+     * @param string $prenomclient
      *
      * @return client
      */
-    public function setPrenomClient($prenomClient)
+    public function setPrenomclient($prenomclient)
     {
-        $this->prenomClient = $prenomClient;
+        $this->prenomclient = $prenomclient;
 
         return $this;
     }
 
     /**
-     * Get prenomClient
+     * Get prenomclient
      *
      * @return string
      */
-    public function getPrenomClient()
+    public function getPrenomclient()
     {
-        return $this->prenomClient;
+        return $this->prenomclient;
     }
 
     /**
-     * Set numTelClient
+     * Set numtelclient
      *
-     * @param string $numTelClient
+     * @param string $numtelclient
      *
      * @return client
      */
-    public function setNumTelClient($numTelClient)
+    public function setNumtelclient($numtelclient)
     {
-        $this->numTelClient = $numTelClient;
+        $this->numtelclient = $numtelclient;
 
         return $this;
     }
 
     /**
-     * Get numTelClient
+     * Get numtelclient
      *
      * @return string
      */
-    public function getNumTelClient()
+    public function getNumtelclient()
     {
-        return $this->numTelClient;
+        return $this->numtelclient;
     }
 
     /**
-     * Set ageClient
+     * Set ageclient
      *
-     * @param string $ageClient
+     * @param string $ageclient
      *
      * @return client
      */
-    public function setAgeClient($ageClient)
+    public function setAgeclient($ageclient)
     {
-        $this->ageClient = $ageClient;
+        $this->ageclient = $ageclient;
 
         return $this;
     }
 
     /**
-     * Get ageClient
+     * Get ageclient
      *
      * @return string
      */
-    public function getAgeClient()
+    public function getAgeclient()
     {
-        return $this->ageClient;
+        return $this->ageclient;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->nomclient;
+
     }
 }
-

@@ -7,184 +7,131 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * location
  *
- * @ORM\Table(name="location")
- * @ORM\Entity(repositoryClass="BateauxBundle\Repository\locationRepository")
+ * @ORM\Table(name="location", indexes={@ORM\Index(name="LOCATION_CLIENT_FK", columns={"idClient"})})
+ * @ORM\Entity
  */
 class location
 {
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="idLocation", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $idlocation;
 
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="idLocation", type="integer")
+     * @ORM\Column(name="PrixJourLocation", type="integer", nullable=false)
      */
-    private $idLocation;
+    private $prixjourlocation;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="PrixJourLocation", type="decimal", precision=20, scale=0)
+     * @ORM\Column(name="DureeLocation", type="integer", nullable=false)
      */
-    private $prixJourLocation;
+    private $dureelocation;
 
     /**
-     * @var string
+     * @var \Client
      *
-     * @ORM\Column(name="DureeLocation", type="decimal", precision=20, scale=0)
+     * @ORM\ManyToOne(targetEntity="client")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idClient", referencedColumnName="idClient")
+     * })
      */
-    private $dureeLocation;
+    private $idclient;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="Bateau_idBateau", type="integer")
-     */
-    private $bateauIdBateau;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="Client_idClient", type="integer")
-     */
-    private $clientIdClient;
 
 
     /**
-     * Get id
+     * Get idlocation
      *
-     * @return int
+     * @return integer
      */
-    public function getId()
+    public function getIdlocation()
     {
-        return $this->id;
+        return $this->idlocation;
     }
 
     /**
-     * Set idLocation
+     * Set prixjourlocation
      *
-     * @param integer $idLocation
+     * @param integer $prixjourlocation
      *
      * @return location
      */
-    public function setIdLocation($idLocation)
+    public function setPrixjourlocation($prixjourlocation)
     {
-        $this->idLocation = $idLocation;
+        $this->prixjourlocation = $prixjourlocation;
 
         return $this;
     }
 
     /**
-     * Get idLocation
+     * Get prixjourlocation
      *
-     * @return int
+     * @return integer
      */
-    public function getIdLocation()
+    public function getPrixjourlocation()
     {
-        return $this->idLocation;
+        return $this->prixjourlocation;
     }
 
     /**
-     * Set prixJourLocation
+     * Set dureelocation
      *
-     * @param string $prixJourLocation
+     * @param integer $dureelocation
      *
      * @return location
      */
-    public function setPrixJourLocation($prixJourLocation)
+    public function setDureelocation($dureelocation)
     {
-        $this->prixJourLocation = $prixJourLocation;
+        $this->dureelocation = $dureelocation;
 
         return $this;
     }
 
     /**
-     * Get prixJourLocation
+     * Get dureelocation
      *
-     * @return string
+     * @return integer
      */
-    public function getPrixJourLocation()
+    public function getDureelocation()
     {
-        return $this->prixJourLocation;
+        return $this->dureelocation;
     }
 
     /**
-     * Set dureeLocation
+     * Set idclient
      *
-     * @param string $dureeLocation
+     * @param \BateauxBundle\Entity\client $idclient
      *
      * @return location
      */
-    public function setDureeLocation($dureeLocation)
+    public function setIdclient(\BateauxBundle\Entity\client $idclient = null)
     {
-        $this->dureeLocation = $dureeLocation;
+        $this->idclient = $idclient;
 
         return $this;
     }
 
     /**
-     * Get dureeLocation
+     * Get idclient
      *
-     * @return string
+     * @return \BateauxBundle\Entity\client
      */
-    public function getDureeLocation()
+    public function getIdclient()
     {
-        return $this->dureeLocation;
+        return $this->idclient;
     }
 
-    /**
-     * Set bateauIdBateau
-     *
-     * @param integer $bateauIdBateau
-     *
-     * @return location
-     */
-    public function setBateauIdBateau($bateauIdBateau)
+    public function __toString()
     {
-        $this->bateauIdBateau = $bateauIdBateau;
+        return (string) $this->idlocation;
 
-        return $this;
-    }
-
-    /**
-     * Get bateauIdBateau
-     *
-     * @return int
-     */
-    public function getBateauIdBateau()
-    {
-        return $this->bateauIdBateau;
-    }
-
-    /**
-     * Set clientIdClient
-     *
-     * @param integer $clientIdClient
-     *
-     * @return location
-     */
-    public function setClientIdClient($clientIdClient)
-    {
-        $this->clientIdClient = $clientIdClient;
-
-        return $this;
-    }
-
-    /**
-     * Get clientIdClient
-     *
-     * @return int
-     */
-    public function getClientIdClient()
-    {
-        return $this->clientIdClient;
     }
 }
-

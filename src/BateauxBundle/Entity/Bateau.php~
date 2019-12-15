@@ -1,0 +1,99 @@
+<?php
+
+namespace BateauxBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Bateau
+ *
+ * @ORM\Table(name="bateau", indexes={@ORM\Index(name="BATEAU_LOCATION_FK", columns={"idLocation"})})
+ * @ORM\Entity
+ */
+class Bateau
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idBateau", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idbateau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marqueBateau", type="string", length=30, nullable=false)
+     */
+    private $marquebateau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longueurCoqueBateau", type="string", length=30, nullable=false)
+     */
+    private $longueurcoquebateau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longueurFlottaisonBateau", type="string", length=30, nullable=false)
+     */
+    private $longueurflottaisonbateau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="largeurMaxiBateau", type="string", length=30, nullable=false)
+     */
+    private $largeurmaxibateau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TirantAirBateau", type="string", length=30, nullable=false)
+     */
+    private $tirantairbateau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TirantEauMinBateau", type="string", length=30, nullable=false)
+     */
+    private $tiranteauminbateau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TypeCoqueBateau", type="string", length=30, nullable=false)
+     */
+    private $typecoquebateau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AnneBateau", type="string", length=4, nullable=false)
+     */
+    private $annebateau;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DeplacementLegeBateau", type="string", length=30, nullable=false)
+     */
+    private $deplacementlegebateau;
+
+    /**
+     * @var \Location
+     *
+     * @ORM\ManyToOne(targetEntity="Location")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idLocation", referencedColumnName="idLocation")
+     * })
+     */
+    private $idlocation;
+
+
+}
+
